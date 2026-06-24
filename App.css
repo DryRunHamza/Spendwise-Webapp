@@ -1,0 +1,361 @@
+/* ==========================================
+   SPENDWISE GLOBAL STYLES & VARIABLES
+   ========================================== */
+:root {
+  --bg-primary: #f8fafc;        /* Sweeter, premium light gray */
+  --bg-card: #ffffff;
+  --text-main: #1e293b;         /* Crisper slate for readability */
+  --text-muted: #64748b;        /* Helper soft gray */
+  --border-color: #e2e8f0;
+  --primary-color: #3182ce;
+  --primary-hover: #2b6cb0;     /* Added for smooth button hover states */
+  --radius-sm: 6px;
+  --radius-md: 12px;            /* Softer modern rounded corners */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.02);
+}
+
+/* Perfect Sync for Your Dark Mode Toggle */
+body.dark-mode {
+  --bg-primary: #0f172a;        /* Modern deep slate dark mode */
+  --bg-card: #1e293b;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-color: #334155;
+  --primary-color: #63b3ed;
+  --primary-hover: #4299e1;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.4);
+}
+
+/* Smooth Global Reset */
+body {
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================
+   ANIMATIONS (The Magic Touch)
+   ========================================== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ==========================================
+   NAVIGATION BAR
+   ========================================== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--bg-card);
+  padding: 1rem 2rem;
+  border-bottom: 2px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-links a, .theme-btn {
+  margin-left: 1.25rem;
+  text-decoration: none;
+  color: var(--text-main);
+  font-weight: 500;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+/* Elegant Hover Accent for Navbar items */
+.nav-links a:hover, .theme-btn:hover {
+  background: rgba(49, 130, 206, 0.1);
+  color: var(--primary-color);
+}
+
+/* ==========================================
+   LAYOUT CONTAINERS & GRID
+   ========================================== */
+.container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  animation: scaleIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .dashboard-grid { 
+    grid-template-columns: 1fr; 
+    gap: 1.5rem;
+  }
+}
+
+.metrics-row {
+  display: flex;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+/* ==========================================
+   CARDS & METRICS
+   ========================================== */
+.card {
+  background: var(--bg-card);
+  padding: 1.75rem;
+  border-radius: var(--radius-md);
+  flex: 1;
+  min-width: 220px;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+/* Subtle hover pop effect on your metric cards */
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Keeping your precise left border colors but making them blend smoothly */
+.income { border-left: 6px solid #38a169; }
+.expense { border-left: 6px solid #e53e3e; }
+
+/* ==========================================
+   INPUTS, FORMS & SELECTS
+   ========================================== */
+.transaction-form input, 
+.transaction-form select {
+  display: block;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1.25rem;
+  box-sizing: border-box;
+  background: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+/* Beautiful custom glow rings when you click form fields */
+.transaction-form input:focus, 
+.transaction-form select:focus,
+.filter-bar input:focus,
+.filter-bar select:focus,
+.auth-card input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.15);
+}
+
+.filter-bar {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.filter-bar input,
+.filter-bar select {
+  background: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+.filter-bar input { flex: 2; padding: 0.6rem; }
+.filter-bar select { flex: 1; padding: 0.6rem; }
+
+/* ==========================================
+   TRANSACTION LEDGER LIST
+   ========================================== */
+.ledger-list { 
+  list-style: none; 
+  padding: 0; 
+}
+
+.ledger-item {
+  display: flex;
+  justify-content: space-between;
+  background: var(--bg-card);
+  padding: 1.1rem 1.5rem;
+  margin-bottom: 0.75rem;
+  border-radius: var(--radius-sm);
+  align-items: center;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: fadeInUp 0.3s ease-out forwards;
+}
+
+/* Highlight ledger rows cleanly when hovered over */
+.ledger-item:hover {
+  transform: translateX(3px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-color);
+}
+
+/* ==========================================
+   AUTHENTICATION CARD
+   ========================================== */
+.auth-card {
+  max-width: 420px;
+  margin: 60px auto;
+  background: var(--bg-card);
+  padding: 2.5rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-lg);
+  animation: scaleIn 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Beautifying the inputs specifically inside your Login card */
+.auth-card input {
+  display: block; 
+  width: 100%; 
+  padding: 0.8rem 1rem; 
+  margin-bottom: 1.25rem; 
+  box-sizing: border-box;
+  background: var(--bg-primary);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+/* ==========================================
+   BUTTONS
+   ========================================== */
+button {
+  cursor: pointer;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.75rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 4px rgba(49, 130, 206, 0.2);
+  transition: all 0.2s ease;
+}
+
+/* Sleek physical response when interacting with buttons */
+button:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(49, 130, 206, 0.3);
+}
+
+button:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 2px rgba(49, 130, 206, 0.2);
+}
+.brand-logo {
+  font-size: 1.4rem;
+  font-weight: 700;             /* Makes it beautifully bold */
+  color: var(--text-main);      /* Dynamically matches your light/dark mode text color */
+  text-decoration: none !important; /* Forces the underline to disappear */
+  cursor: pointer;
+}
+
+/* Prevents the browser from turning it purple after you click it */
+.brand-logo:visited, 
+.brand-logo:active, 
+.brand-logo:hover {
+  color: var(--text-main) !important;
+  text-decoration: none !important;
+}
+/* ==========================================
+   LANDING PAGE HERO BUTTONS (DISTINCT STYLES)
+   ========================================== */
+
+/* Base Styles for Both Buttons (Removes default link underlines) */
+.btn {
+  display: inline-block;
+  text-decoration: none !important; /* Strips the default browser link underline */
+  padding: 0.85rem 2.25rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 8px;               /* Smooth, modern rounded corners */
+  transition: all 0.2s ease-in-out; /* Makes hover animations look like butter */
+  text-align: center;
+  cursor: pointer;
+}
+
+/* Creates a clean 20px gap between the two choices so they don't crash into each other */
+.btn + .btn {
+  margin-left: 1.25rem;
+}
+
+/* 🌟 OPTION 1: Primary Action ("Get Started Today") - Solid Filled */
+.primary-btn {
+  background-color: var(--primary-color, #3182ce);
+  color: white !important;
+  border: 2px solid var(--primary-color, #3182ce);
+  box-shadow: 0 4px 12px rgba(49, 130, 206, 0.25); /* Gives it a slight glow */
+}
+
+.primary-btn:hover {
+  background-color: var(--primary-hover, #2b6cb0);
+  border-color: var(--primary-hover, #2b6cb0);
+  transform: translateY(-2px);      /* Gives a slight floating effect on hover */
+  box-shadow: 0 6px 18px rgba(49, 130, 206, 0.35);
+}
+
+/* 👥 OPTION 2: Secondary Action ("Sign In") - Sleek Ghost/Outlined */
+.secondary-btn {
+  background-color: transparent;
+  color: var(--primary-color, #3182ce) !important;
+  border: 2px solid var(--primary-color, #3182ce); /* Clear border outline */
+}
+
+.secondary-btn:hover {
+  background-color: rgba(49, 130, 206, 0.08); /* Fills with a very soft blue tint */
+  transform: translateY(-2px);
+}
+
+/* Physical push-down click response for both buttons */
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* Utility to add some breathing room between your paragraph text and the buttons */
+.primary-btn {
+  margin-top: 1.5rem;
+}
